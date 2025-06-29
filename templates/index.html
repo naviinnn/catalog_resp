@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalog Manager</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts for Inter and Montserrat - UPDATED TO INCLUDE MONTSERRAT FOR MAIN TITLE -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body class="light-theme">
     <div class="container">
-        <h1>Catalog Manager</h1>
+        <h1 id="mainTitle">Catalog Manager</h1>
 
         <div id="message-container"></div>
+        <div id="loadingSpinner" class="spinner"></div>
 
+        <!-- Button group optimized for single line on larger screens, wraps on smaller -->
         <div class="button-group">
-            <button id="createCatalogBtn" class="btn-primary">Create New Catalog</button>
-            <button id="viewAllCatalogsBtn" class="btn-secondary">View All Catalogs</button>
-            <button id="updateByIdBtn" class="btn-secondary">Update Catalog by ID</button>
-            <button id="deleteByIdBtn" class="btn-danger">Delete Catalog by ID</button>
-            <button id="viewByIdBtn" class="btn-secondary">View Catalog by ID</button>
+            <button id="createCatalogBtn" class="btn-large btn-primary-color">Create New Catalog</button>
+            <button id="viewAllCatalogsBtn" class="btn-large btn-secondary-color">View All Catalogs</button>
+            <button id="updateByIdBtn" class="btn-large btn-secondary-color">Update Catalog by ID</button>
+            <button id="deleteByIdBtn" class="btn-large btn-danger-color">Delete Catalog by ID</button>
+            <button id="viewByIdBtn" class="btn-large btn-secondary-color">View Catalog by ID</button>
         </div>
 
         <div id="noCatalogsMessage" class="no-catalogs" style="display: none;">
@@ -76,35 +79,35 @@
                     <label for="status">Status:</label>
                     <select id="status" required>
                         <option value="">Select Status</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                        <option value="upcoming">Upcoming</option>
-                        <option value="expired">Expired</option>
+                        <option value="active">active</option>
+                        <option value="inactive">inactive</option>
+                        <option value="upcoming">upcoming</option>
+                        <option value="expired">expired</option>
                     </select>
                     <span id="statusError" class="error-text"></span>
                 </div>
 
                 <div class="button-group">
-                    <button type="submit" id="submitCatalogBtn" class="btn-primary">Create Catalog</button>
-                    <button type="button" class="btn-secondary" onclick="document.getElementById('closeModalBtn').click()">Cancel</button>
+                    <button type="submit" id="submitCatalogBtn" class="btn-large btn-primary-color">Create Catalog</button>
+                    <button type="button" class="btn-large btn-secondary-color" onclick="document.getElementById('closeModalBtn').click()">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <div id="confirmModal" class="modal confirm-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div id="confirmModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="modal-content">
             <span class="close-button" id="closeConfirmModalBtn">&times;</span>
             <h2>Confirm Deletion</h2>
             <p id="confirmMessage">Are you sure you want to delete this catalog? This action cannot be undone.</p>
             <div class="button-group">
-                <button id="confirmDeleteBtn" class="btn-danger">Delete</button>
-                <button type="button" class="btn-secondary" onclick="document.getElementById('cancelDeleteBtn').click()">Cancel</button>
+                <button id="confirmDeleteBtn" class="btn-large btn-danger-color">Delete</button>
+                <button type="button" class="btn-large btn-secondary-color" onclick="document.getElementById('cancelDeleteBtn').click()">Cancel</button>
             </div>
         </div>
     </div>
 
-    <div id="inputByIdModal" class="modal confirm-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div id="inputByIdModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="modal-content">
             <span class="close-button" id="closeInputByIdModalBtn">&times;</span>
             <h2 id="actionByIdTitle">Enter Catalog ID</h2>
@@ -115,8 +118,8 @@
                     <span id="inputByIdError" class="error-text"></span>
                 </div>
                 <div class="button-group">
-                    <button type="submit" id="actionByIdSubmitBtn" class="btn-primary">Submit</button>
-                    <button type="button" class="btn-secondary" onclick="document.getElementById('closeInputByIdModalBtn').click()">Cancel</button>
+                    <button type="submit" id="actionByIdSubmitBtn" class="btn-large btn-primary-color">Submit</button>
+                    <button type="button" class="btn-large btn-secondary-color" onclick="document.getElementById('closeInputByIdModalBtn').click()">Cancel</button>
                 </div>
             </form>
         </div>

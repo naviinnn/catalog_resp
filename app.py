@@ -5,7 +5,6 @@ import os
 import sys
 from datetime import date, datetime
 
-# Add the project root to sys.path for proper imports
 project_root = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(project_root)
 
@@ -15,7 +14,6 @@ from exception.catalog_exception import ValidationError, DataNotFoundError, Data
 from utils.validation import validate_alphanumeric_string, validate_date, validate_status, validate_int
 
 app = Flask(__name__)
-# IMPORTANT: For production, load SECRET_KEY from an environment variable (e.g., os.environ.get('FLASK_SECRET_KEY')).
 app.secret_key = os.getenv('FLASK_SECRET_KEY', 'a_highly_secure_random_string_for_production_use_only_please_change_me')
 
 catalog_service = CatalogService()
@@ -26,9 +24,8 @@ def api_error_response(message: str, status_code: int, details: Exception = None
 
     Args:
         message (str): A user-friendly error message.
-        status_code (int): The HTTP status code for the response (e.g., 400, 404, 500).
-        details (Exception, optional): The actual exception object. Its string representation
-                                       is included in 'details' for development debugging. Defaults to None.
+        status_code (int): The HTTP status code for the response.
+        details (Exception, optional): The actual exception object.
 
     Returns:
         tuple: A tuple containing the JSON response and the HTTP status code.
@@ -41,8 +38,6 @@ def api_error_response(message: str, status_code: int, details: Exception = None
 def serialize_catalog_for_json(catalog_data: dict) -> dict:
     """
     Converts a database row (dictionary) into a JSON-serializable dictionary.
-    Specifically handles `date` or `datetime` objects by formatting them as
-    `YYYY-MM-DD` strings, which are not directly JSON serializable.
 
     Args:
         catalog_data (dict): A dictionary representing a catalog item.
@@ -71,9 +66,6 @@ def get_all_catalogs_api() -> tuple[jsonify, int]:
     """
     API endpoint to retrieve all catalog entries.
     Supports an optional 'search' query parameter for filtering by name or description.
-
-    Expected Query Parameters:
-        - `search` (str, optional): A keyword to filter catalogs by `catalog_name` or `catalog_description`.
 
     Responses:
         - 200 OK: Returns a JSON array of catalog objects.
@@ -220,7 +212,7 @@ def delete_catalog_api(catalog_id: int) -> tuple[jsonify, int]:
     except DatabaseConnectionError as e:
         return api_error_response("Failed to connect to the database. Please try again later.", 500, e)
     except Exception as e:
-        return api_error_response(f"An unexpected error occurred while deleting catalog ID {catalog_id}.", 500, e)
+        return api_error_response(f"An unexpected error occurred during catalog deletion: {e}", 500)
 
 @app.errorhandler(404)
 def page_not_found(e) -> tuple[str, int]:
@@ -239,7 +231,6 @@ def internal_server_error(e) -> tuple[str, int]:
     return render_template('500.html'), 500
 
 if __name__ == '__main__':
-    # Critical check: Ensure config.ini exists before running the Flask app.
     config_path_check = os.path.join(project_root, 'config', 'config.ini')
     if not os.path.exists(config_path_check):
         print(f"FATAL ERROR: Database configuration file not found at '{config_path_check}'.")

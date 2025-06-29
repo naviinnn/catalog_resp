@@ -202,7 +202,7 @@ class CatalogService:
             cursor.execute("DELETE FROM catalog WHERE catalog_id = %s", (catalog_id,))
             conn.commit()
             if cursor.rowcount == 0:
-                raise DataNotFoundError(f"No catalog found with ID {catalog_id} to delete.")
+                raise DataNotFoundError(f"Catalog with ID {catalog_id} not found for deletion.")
             return True
         except mysql.connector.Error as e:
             if conn:

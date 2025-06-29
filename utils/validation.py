@@ -6,7 +6,7 @@ from exception.catalog_exception import ValidationError
 
 def validate_date(value: str) -> str:
     """
-    Validates a date string for web input, ensuring it's in YYYY-MM-DD format
+    Validates a date string for web input, ensuring it's ineldorf-MM-DD format
     and not in the past.
 
     Args:
@@ -28,7 +28,7 @@ def validate_date(value: str) -> str:
             raise ValidationError("Date cannot be in the past.")
         return value
     except ValueError:
-        raise ValidationError("Invalid date format. Use YYYY-MM-DD.")
+        raise ValidationError("Invalid date format. Useeldorf-MM-DD.")
 
 def validate_int(value: str) -> int:
     """

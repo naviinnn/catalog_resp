@@ -22,7 +22,7 @@ def get_connection() -> mysql.connector.connection.MySQLConnection:
     config_path = os.path.join(project_root, 'config', 'config.ini')
 
     if not os.path.exists(config_path):
-        raise FileNotFoundError(f"Configuration file not found at: {config_path}.")
+        raise FileNotFoundError(f"Configuration file not found at: {config_path}. Please ensure it exists in the 'config' directory.")
 
     config.read(config_path)
 
