@@ -7,22 +7,14 @@ import os
 
 def get_connection() -> mysql.connector.connection.MySQLConnection:
     """
-    Establishes and returns a connection to the MySQL database based on config.ini settings.
-
-    Raises:
-        FileNotFoundError: If the config.ini file is not found at the expected path.
-        DatabaseConnectionError: If there is any issue connecting to the MySQL database.
-
-    Returns:
-        mysql.connector.connection.MySQLConnection: The established database connection object.
+    Establishes and returns a connection to the MySQL database.
+    Raises FileNotFoundError or DatabaseConnectionError on failure.
     """
     config = ConfigParser()
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(current_dir)
-    config_path = os.path.join(project_root, 'config', 'config.ini')
+    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'config', 'config.ini')
 
     if not os.path.exists(config_path):
-        raise FileNotFoundError(f"Configuration file not found at: {config_path}. Please ensure it exists in the 'config' directory.")
+        raise FileNotFoundError(f"Configuration file not found at: {config_path}")
 
     config.read(config_path)
 
@@ -34,4 +26,4 @@ def get_connection() -> mysql.connector.connection.MySQLConnection:
             database=config.get('mysql', 'database')
         )
     except mysql.connector.Error as e:
-        raise DatabaseConnectionError(f"Failed to connect to the database: {e}.")
+        raise DatabaseConnectionError(f"Failed to connect to the database: {e}")

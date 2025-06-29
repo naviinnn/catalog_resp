@@ -99,13 +99,16 @@ h1, h2 {
     letter-spacing: 0.5px;
 }
 
-/* Main Title Specific Styling - MODIFIED */
+/* Main Title Specific Styling */
 #mainTitle {
-    font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
-    text-transform: uppercase; /* Ensured uppercase */
+    font-family: 'Montserrat', sans-serif; /* Montserrat font */
+    text-transform: uppercase; /* Uppercase */
     font-size: 2.8em;
     letter-spacing: 2px;
     font-weight: 700;
+    display: block; /* Ensures block behavior for centering */
+    margin-left: auto; /* For horizontal centering */
+    margin-right: auto; /* For horizontal centering */
 }
 
 /* Button Group Layout */
@@ -190,8 +193,8 @@ button {
 }
 
 .btn-edit-color {
-    background-color: var(--edit-button-color); /* Now yellow */
-    color: var(--text-color); /* Keeping text consistent for readability on yellow */
+    background-color: var(--edit-button-color); /* Yellow */
+    color: var(--text-color);
 }
 
 .btn-edit-color:hover {
@@ -201,7 +204,7 @@ button {
 }
 
 .btn-danger-color {
-    background-color: var(--delete-button-color); /* Remains Red */
+    background-color: var(--delete-button-color); /* Red */
     color: white;
 }
 
@@ -234,7 +237,7 @@ button {
     background-color: var(--table-header-bg);
     color: var(--primary-main-color);
     font-weight: var(--heading-font-weight);
-    text-transform: uppercase; /* Ensure table headers are uppercase */
+    text-transform: uppercase; /* Table headers uppercase */
     font-size: 14px;
     letter-spacing: 0.8px;
 }
