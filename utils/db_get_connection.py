@@ -1,5 +1,3 @@
-# utils/db_get_connection.py
-
 import mysql.connector
 from configparser import ConfigParser
 from exception.catalog_exception import DatabaseConnectionError

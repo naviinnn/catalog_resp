@@ -1,5 +1,3 @@
-// static/js/script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Element References & Utility ---
     // Centralized function to get elements by ID for conciseness

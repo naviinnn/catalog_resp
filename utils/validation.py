@@ -1,5 +1,3 @@
-# utils/validation.py
-
 from datetime import datetime
 import re
 from exception.catalog_exception import ValidationError

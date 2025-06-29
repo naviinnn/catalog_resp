@@ -1,5 +1,3 @@
-# service/catalog_service.py
-
 import mysql.connector
 from utils.db_get_connection import get_connection
 from dto.catalog import Catalog

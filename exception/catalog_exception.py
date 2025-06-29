@@ -1,5 +1,3 @@
-# exception/catalog_exception.py
-
 class ValidationError(Exception):
     """Custom exception for input validation errors."""
     pass

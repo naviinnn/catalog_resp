@@ -1,5 +1,3 @@
-# dto/catalog.py
-
 class Catalog:
     """
     Data Transfer Object (DTO) for a Catalog item.
