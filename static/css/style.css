@@ -1,15 +1,16 @@
-/* General Styling */
+/* static/css/style.css */
+
 :root {
-    --bg-color: #f4f7f6; /* Light background */
+    --bg-color: #f4f7f6;
     --text-color: #333;
-    --primary-color: #4CAF50; /* Green */
+    --primary-color: #4CAF50;
     --primary-dark-color: #45a049;
-    --secondary-color: #f0f0f0; /* Light gray for secondary elements */
+    --secondary-color: #f0f0f0;
     --border-color: #ddd;
     --input-border-color: #ccc;
     --focus-border-color: #888;
     --table-header-bg: #e2e2e2;
-    --modal-bg: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+    --modal-bg: rgba(0, 0, 0, 0.6);
     --modal-content-bg: #fff;
     --success-color: #28a745;
     --error-color: #dc3545;
@@ -56,7 +57,6 @@ h1, h2 {
     font-weight: 700;
 }
 
-/* Buttons */
 .button-group {
     display: flex;
     justify-content: center;
@@ -118,36 +118,13 @@ button {
     background-color: #c82333;
 }
 
-/* Search Container */
-.search-container {
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-#searchInput {
-    width: 100%;
-    max-width: 400px;
-    padding: 12px 15px;
-    border: 1px solid var(--input-border-color);
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-}
-
-#searchInput:focus {
-    outline: none;
-    border-color: var(--focus-border-color);
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); /* Green glow */
-}
-
-/* Table Styling */
 .catalog-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius);
-    overflow: hidden; /* Ensures rounded corners apply to table content */
+    overflow: hidden;
 }
 
 .catalog-table th,
@@ -174,10 +151,9 @@ button {
 }
 
 .catalog-table td.actions {
-    white-space: nowrap; /* Keep buttons on one line */
+    white-space: nowrap;
 }
 
-/* No catalogs message */
 .no-catalogs {
     text-align: center;
     padding: 30px;
@@ -189,26 +165,24 @@ button {
     box-shadow: var(--box-shadow);
 }
 
-
-/* Modals */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     background-color: var(--modal-bg);
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .modal.show {
-    display: flex; /* Flex to center content */
+    display: flex;
     opacity: 1;
 }
 
@@ -291,7 +265,6 @@ button {
     display: block;
 }
 
-/* Confirmation Modal Specifics */
 .confirm-modal .modal-content {
     max-width: 400px;
     text-align: center;
@@ -306,7 +279,6 @@ button {
     margin-bottom: 25px;
 }
 
-/* Message Container (for success/error alerts) */
 #message-container {
     margin-bottom: 20px;
     text-align: center;
@@ -321,7 +293,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    animation: fadeOut 5s forwards; /* Animation for alerts */
+    animation: fadeOut 5s forwards;
 }
 
 .alert-success {
@@ -336,15 +308,12 @@ button {
     border: 1px solid #f5c6cb;
 }
 
-/* Keyframe for fading out messages */
 @keyframes fadeOut {
     0% { opacity: 1; }
     80% { opacity: 1; }
     100% { opacity: 0; display: none; }
 }
 
-
-/* Responsive Design */
 @media (max-width: 768px) {
     .catalog-table th,
     .catalog-table td {
@@ -376,18 +345,17 @@ button {
 
     .catalog-table th,
     .catalog-table td {
-        /* Stack headers/data for very small screens if needed, or allow horizontal scroll */
         display: block;
         width: 100%;
         text-align: right;
-        padding-left: 50%; /* Make space for pseudo-element label */
+        padding-left: 50%;
         position: relative;
     }
     .catalog-table thead {
-        display: none; /* Hide original headers */
+        display: none;
     }
     .catalog-table td::before {
-        content: attr(data-label); /* Use data-label for mobile view */
+        content: attr(data-label);
         position: absolute;
         left: 0;
         width: 45%;
@@ -397,7 +365,7 @@ button {
     }
     .catalog-table td.actions {
         text-align: left;
-        padding-left: 15px; /* Adjust if data-label not needed for actions */
+        padding-left: 15px;
     }
     .button-group {
         flex-direction: column;

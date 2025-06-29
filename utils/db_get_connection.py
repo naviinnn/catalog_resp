@@ -1,10 +1,21 @@
+# utils/db_get_connection.py
+
 import mysql.connector
 from configparser import ConfigParser
 from exception.catalog_exception import DatabaseConnectionError
 import os
 
-def get_connection():
-    """Establishes and returns a connection to the MySQL database."""
+def get_connection() -> mysql.connector.connection.MySQLConnection:
+    """
+    Establishes and returns a connection to the MySQL database based on config.ini settings.
+
+    Raises:
+        FileNotFoundError: If the config.ini file is not found at the expected path.
+        DatabaseConnectionError: If there is any issue connecting to the MySQL database.
+
+    Returns:
+        mysql.connector.connection.MySQLConnection: The established database connection object.
+    """
     config = ConfigParser()
     current_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(current_dir)
